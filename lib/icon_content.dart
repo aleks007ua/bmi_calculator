@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -22,12 +21,12 @@ class IconContent extends StatelessWidget {
           iconCardForButtom,
           size: 80,
         ),
-        SizedBox(
+        const SizedBox(
           height: 15,
         ),
         Text(
          textIcon,
-         style: TextStyle(
+         style: const TextStyle(
            fontSize: 20,
            color: Colors.white,
          ),
