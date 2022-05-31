@@ -23,29 +23,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  // Color maleColourCard = inActiveCardColour;
-  // Color femaleColourCard = inActiveCardColour;
 
-  void updateColour(Gender selectedGender) {
-    //   if (selectedGender == Gender.male) {
-    //     if (maleColourCard == inActiveCardColour) {
-    //       maleColourCard = activeCardColour;
-    //       femaleColourCard = inActiveCardColour;
-    //     } else {
-    //       maleColourCard = inActiveCardColour;
-    //       femaleColourCard = activeCardColour;
-    //     }
-    //   }
-    //   if (selectedGender == Gender.female) {
-    //     if (femaleColourCard == activeCardColour) {
-    //       femaleColourCard = inActiveCardColour;
-    //       maleColourCard = activeCardColour;
-    //     } else {
-    //       femaleColourCard = activeCardColour;
-    //       maleColourCard = inActiveCardColour;
-    //     }
-    //   }
-  }
+  void updateColour(Gender selectedGender) {}
 
   @override
   Widget build(BuildContext context) {
