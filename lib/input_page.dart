@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'icon_content.dart';
 
 const bottomContainerHeidth = 90.0;
 const activeCardColour = Color.fromARGB(255, 29, 29, 46);
@@ -25,12 +27,20 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusableCard(
+                    cardChild: IconContent(
+                      iconCardForButtom: iconCardMale,
+                      textIcon: iconTextMale,
+                    ),
                     colorChange: activeCardColour,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     colorChange: activeCardColour,
+                    cardChild: IconContent(
+                      iconCardForButtom: iconCardFemale,
+                      textIcon: iconTextFemale,
+                    ),
                   ),
                 ),
               ],
@@ -39,6 +49,16 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: ReusableCard(
               colorChange: activeCardColour,
+              cardChild: Column(
+                children: const [
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'MALE',
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -47,11 +67,31 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colorChange: activeCardColour,
+                    cardChild: Column(
+                      children: const [
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          'MALE',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     colorChange: activeCardColour,
+                    cardChild: Column(
+                      children: const [
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          'MALE',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -70,13 +110,15 @@ class _InputPageState extends State<InputPage> {
 }
 
 class ReusableCard extends StatelessWidget {
-  ReusableCard({required this.colorChange});
+  ReusableCard({required this.colorChange, required this.cardChild});
 
   final Color colorChange;
+  final Widget cardChild;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: cardChild,
       margin: EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: colorChange,
