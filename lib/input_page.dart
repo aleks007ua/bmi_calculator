@@ -1,6 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+
+const bottomContainerHeidth = 90.0;
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -54,6 +54,12 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             ),
+          ),
+          Container(
+            color: Colors.pink,
+            margin: EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            height: bottomContainerHeidth,
           ),
         ],
       ),
