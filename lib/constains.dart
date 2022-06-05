@@ -18,5 +18,8 @@ const numberTextStyle = TextStyle(
 
 const iconTextStyle = TextStyle(
   fontSize: 20,
-  color: Color.fromARGB(179, 255, 255, 255),
+  color: Color.fromARGB(150, 255, 255, 255),
 );
+
+const minSliderValue = 155.0;
+const maxSliderValue = 205.0;

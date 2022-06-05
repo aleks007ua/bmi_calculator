@@ -19,11 +19,15 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  int height = 180;
+  int weight = 49;
+  int age = 23;
 
   void updateColour(Gender selectedGender) {}
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: Text('BMI Calculator'),
@@ -34,6 +38,7 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: [
+
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
@@ -55,6 +60,7 @@ class _InputPageState extends State<InputPage> {
                     ),
                   ),
                 ),
+
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
@@ -79,12 +85,14 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
+
           Expanded(
             child: ReusableCard(
               colorChange: activeCardColour,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  // ignore: prefer_const_constructors
                   SizedBox(
                     height: 15,
                   ),
@@ -98,18 +106,43 @@ class _InputPageState extends State<InputPage> {
                     textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
-                        '180',
+                        height.toString(),
                         style: numberTextStyle,
                       ),
                       Text(
                         'cm',
                         style: iconTextStyle,
-                        ),
+                      ),
                     ],
                   ),
-                ],),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      activeTrackColor: bottomContainerColour,
+                      inactiveTrackColor: iconTextStyle.color,
+                      overlayColor: Color.fromARGB(57, 233, 30, 98),
+                      thumbColor: bottomContainerColour,
+                      trackHeight: 1.0,
+                      thumbShape:
+                          RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                      overlayShape:
+                          RoundSliderOverlayShape(overlayRadius: 35.0),
+                    ),
+                    child: Slider(
+                      value: height.toDouble(),
+                      min: minSliderValue,
+                      max: maxSliderValue,
+                      onChanged: (double valueSlider) {
+                        setState(() {
+                          height = valueSlider.round();
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
+
           Expanded(
             child: Row(
               children: [
@@ -117,12 +150,22 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                     colorChange: activeCardColour,
                     cardChild: Column(
-                      children: const [
-                        SizedBox(
-                          height: 15,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'WEIGHT',
+                          style: iconTextStyle,
                         ),
                         Text(
-                          '',
+                          weight.toString(),
+                          style: numberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(),
+                            RoundIconButton(),
+                          ],
                         ),
                       ],
                     ),
@@ -132,12 +175,15 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                     colorChange: activeCardColour,
                     cardChild: Column(
-                      children: const [
-                        SizedBox(
-                          height: 15,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'AGE',
+                          style: iconTextStyle,
                         ),
                         Text(
-                          '',
+                          age.toString(),
+                          style: numberTextStyle,
                         ),
                       ],
                     ),
@@ -146,6 +192,7 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
+
           Container(
             color: bottomContainerColour,
             margin: EdgeInsets.only(top: 10.0),
@@ -157,12 +204,27 @@ class _InputPageState extends State<InputPage> {
                 style: TextStyle(
                   fontSize: 25,
                 ),
-                
               ),
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+
+class RoundIconButton extends StatelessWidget {
+  const RoundIconButton({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E), 
+      onPressed: () {  },
+      elevation: 6,
+      constraints: BoxConstraints.tightFor(height: 50, width: 50),
     );
   }
 }
