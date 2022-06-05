@@ -1,3 +1,5 @@
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
@@ -27,7 +29,6 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
         title: Text('BMI Calculator'),
@@ -38,7 +39,6 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: [
-
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
@@ -60,7 +60,6 @@ class _InputPageState extends State<InputPage> {
                     ),
                   ),
                 ),
-
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
@@ -85,7 +84,6 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-
           Expanded(
             child: ReusableCard(
               colorChange: activeCardColour,
@@ -142,7 +140,6 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
           ),
-
           Expanded(
             child: Row(
               children: [
@@ -163,8 +160,25 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            RoundIconButton(),
-                            RoundIconButton(),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            ),
                           ],
                         ),
                       ],
@@ -185,6 +199,30 @@ class _InputPageState extends State<InputPage> {
                           age.toString(),
                           style: numberTextStyle,
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -192,7 +230,6 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-
           Container(
             color: bottomContainerColour,
             margin: EdgeInsets.only(top: 10.0),
@@ -213,17 +250,20 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-
 class RoundIconButton extends StatelessWidget {
-  const RoundIconButton({ Key? key }) : super(key: key);
+  RoundIconButton({this.icon, required this.onPressed});
+
+  final IconData? icon;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
+      child: Icon(icon),
       shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E), 
-      onPressed: () {  },
-      elevation: 6,
+      fillColor: Color(0xFF4C4F5E),
+      onPressed: onPressed,
+      elevation: 26,
       constraints: BoxConstraints.tightFor(height: 50, width: 50),
     );
   }
