@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
-
-const bottomContainerHeidth = 90.0;
-const activeCardColour = Color.fromARGB(255, 29, 29, 46);
-const inActiveCardColour = Color.fromARGB(255, 16, 16, 26);
-const bottomContainerColour = Colors.pink;
+import 'constains.dart';
 
 enum Gender {
   male,
@@ -33,6 +29,7 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI Calculator'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
@@ -86,15 +83,31 @@ class _InputPageState extends State<InputPage> {
             child: ReusableCard(
               colorChange: activeCardColour,
               cardChild: Column(
-                children: const [
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
                   SizedBox(
                     height: 15,
                   ),
                   Text(
-                    'MALE',
+                    'HEIGHT',
+                    style: iconTextStyle,
                   ),
-                ],
-              ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        '180',
+                        style: numberTextStyle,
+                      ),
+                      Text(
+                        'cm',
+                        style: iconTextStyle,
+                        ),
+                    ],
+                  ),
+                ],),
             ),
           ),
           Expanded(
@@ -109,7 +122,7 @@ class _InputPageState extends State<InputPage> {
                           height: 15,
                         ),
                         Text(
-                          'MALE',
+                          '',
                         ),
                       ],
                     ),
@@ -124,7 +137,7 @@ class _InputPageState extends State<InputPage> {
                           height: 15,
                         ),
                         Text(
-                          'MALE',
+                          '',
                         ),
                       ],
                     ),
@@ -138,6 +151,15 @@ class _InputPageState extends State<InputPage> {
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
             height: bottomContainerHeidth,
+            child: Center(
+              child: Text(
+                'CALCULATE',
+                style: TextStyle(
+                  fontSize: 25,
+                ),
+                
+              ),
+            ),
           ),
         ],
       ),
