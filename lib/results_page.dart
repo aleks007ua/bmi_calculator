@@ -1,28 +1,34 @@
 import 'package:bmi_calculator/components/constains.dart';
 import 'package:bmi_calculator/input_page.dart';
+import 'package:bmi_calculator/main.dart';
 import 'package:flutter/material.dart';
 import 'components/reusable_card.dart';
 import 'components/bottom_button.dart';
+import 'components/calculator_brain.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({Key? key}) : super(key: key);
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
+  ResultsPage({
+    required this.bmiResult,
+    required this.interpretation,
+    required this.resultText,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         title: Text(
           'BMI Calculator',
         ),
       ),
-
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
-
         children: [
-
           Expanded(
             child: Container(
               padding: EdgeInsets.all(40),
@@ -32,33 +38,29 @@ class ResultsPage extends StatelessWidget {
               ),
             ),
           ),
-
           Expanded(
             flex: 5,
-            
             child: ReusableCard(
               colorChange: activeCardColour,
-              
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.stretch,               
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    'Awesome',
-                    textAlign: TextAlign.center,
-                    style: resultTextFirstTextStyle
-                  ),
+                    resultText,
+                      textAlign: TextAlign.center,
+                      style: resultTextFirstTextStyle,
+                      ),
                   Text(
-                    '165.0',
+                    bmiResult,
                     textAlign: TextAlign.center,
                     style: resultNumberTextStyle,
                   ),
                   Text(
-                    'Your body rely good',
+                    interpretation,
                     textAlign: TextAlign.center,
                     style: resultTextFinalTextStyle,
                   ),
-                  
                 ],
               ),
             ),

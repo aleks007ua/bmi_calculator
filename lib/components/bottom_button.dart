@@ -5,7 +5,8 @@ class BottomButton extends StatelessWidget {
   final void Function() onTap;
   final String? buttomTitle;
 
-  BottomButton({
+  // ignore: use_key_in_widget_constructors
+  const BottomButton({
     required this.onTap,
     required this.buttomTitle,
   });
@@ -16,7 +17,7 @@ class BottomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         color: bottomContainerColour,
-        margin: EdgeInsets.only(top: 10.0),
+        margin: const EdgeInsets.only(top: 10.0),
         width: double.infinity,
         height: bottomContainerHeidth,
         child: Center(
