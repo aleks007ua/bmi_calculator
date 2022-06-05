@@ -1,11 +1,10 @@
-import 'dart:isolate';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 import 'constains.dart';
 import 'results_page.dart';
+import 'bottom_button.dart';
 
 enum Gender {
   male,
@@ -231,36 +230,26 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
             onTap: () {
               Navigator.push(
-                context, MaterialPageRoute(
-                  builder: ((context){
+                context,
+                MaterialPageRoute(
+                  builder: ((context) {
                     return ResultsPage();
-              }),
+                  }),
                 ),
               );
             },
-            child: Container(
-              color: bottomContainerColour,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: bottomContainerHeidth,
-              child: Center(
-                child: Text(
-                  'CALCULATE',
-                  style: TextStyle(
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-            ),
+            buttomTitle: 'CALCULATE',
           ),
         ],
       ),
     );
   }
 }
+
+
 
 class RoundIconButton extends StatelessWidget {
   RoundIconButton({this.icon, required this.onPressed});

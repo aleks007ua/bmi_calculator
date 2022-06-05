@@ -16,9 +16,33 @@ const numberTextStyle = TextStyle(
   fontWeight: FontWeight.w900,
 );
 
+
+
 const iconTextStyle = TextStyle(
   fontSize: 20,
   color: Color.fromARGB(150, 255, 255, 255),
+);
+
+const largeButtonTextStyle = TextStyle(
+  fontSize: 30,
+  color: Color.fromARGB(150, 255, 255, 255),
+  fontWeight: FontWeight.bold,
+);
+
+const resultTextFirstTextStyle = TextStyle(
+  fontSize: 30,
+  color: Color.fromARGB(211, 90, 252, 139),
+  fontWeight: FontWeight.bold,
+);
+
+const resultNumberTextStyle = TextStyle(
+  fontSize: 80,
+  fontWeight: FontWeight.w900,
+);
+
+const resultTextFinalTextStyle = TextStyle(
+  fontSize: 25,
+  fontWeight: FontWeight.w300,
 );
 
 const minSliderValue = 155.0;
